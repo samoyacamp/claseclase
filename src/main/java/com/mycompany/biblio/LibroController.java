@@ -56,8 +56,6 @@ public class LibroController {
     @FXML
     private TextField saga;
     @FXML
-    private Label hellouser;
-    @FXML
     private ListView listaLibro;
 
     @FXML
@@ -183,10 +181,11 @@ public class LibroController {
     }
 
     public void initLists() {
-        hellouser.setText("Bienvenido " + user.getNombre());
+        
         genero.setItems(generoz);
         listaLibro.getItems().clear();
         try {
+            conectarBD();
             List<Libros> libro = ldao.listLibros();
             listaLibro.setItems(FXCollections.observableList(libro));
 
