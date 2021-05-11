@@ -84,6 +84,7 @@ public class LibroController {
     @FXML
     private void savel() {
         librosSel = (Libros) listaLibro.getSelectionModel().getSelectedItem();
+        
         if (librosSel == null) {
             AlertsUtil.mostrarError("No se ha seleccionado ningun libro");
             return;
@@ -99,6 +100,7 @@ public class LibroController {
 //    private String saga;
             ldao.modificarLibro(new Libros(Integer.parseInt(id.getText()), nombre.getText(), editorial.getText(), autor.getText(),
                     genero.getValue().toString(), Date.valueOf(fecha.getValue()), Double.parseDouble(precio.getText()), saga.getText()));
+       initLists();
         } catch (SQLException ex) {
             AlertsUtil.mostrarError("Error al modificar el libro seleccionado");
         }

@@ -102,16 +102,17 @@ public class LibroDAO {
     }
 
     public void modificarLibro(Libros libro) throws SQLException {
-        String sql = "{call spNewLibro (?,?,?,?,?,?,?)}";
+        String sql = "{call spUpdateLibro (?,?,?,?,?,?,?,?)}";
 
         CallableStatement sentencia = conexion.prepareCall(sql);
         sentencia.setInt(1, libro.getId());
         sentencia.setString(2, libro.getNombre());
-        sentencia.setString(3, libro.getAutor());
-        sentencia.setString(4, libro.getGenero());
-        sentencia.setDate(5, libro.getFecha());
-        sentencia.setDouble(6, libro.getPrecio());
-        sentencia.setString(7, libro.getSaga());
+        sentencia.setString(3,libro.getEditorial());
+        sentencia.setString(4, libro.getAutor());
+        sentencia.setString(5, libro.getGenero());
+        sentencia.setDate(6, libro.getFecha());
+        sentencia.setDouble(7, libro.getPrecio());
+        sentencia.setString(8, libro.getSaga());
 
         sentencia.execute();
 
