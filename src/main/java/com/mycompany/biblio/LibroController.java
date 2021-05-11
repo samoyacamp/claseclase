@@ -109,7 +109,7 @@ public class LibroController {
     private void deletel() {
         librosSel = (Libros) listaLibro.getSelectionModel().getSelectedItem();
         if (librosSel == null) {
-            AlertsUtil.mostrarError("No se ha seleccionado niguna ruta");
+            AlertsUtil.mostrarError("No se ha seleccionado nigun libro");
             return;
         }
         try {
@@ -124,7 +124,7 @@ public class LibroController {
             initLists();
 
         } catch (SQLException ex) {
-            AlertsUtil.mostrarError("Error al eliminar la ruta seleccionada" + ex.getMessage());
+            AlertsUtil.mostrarError("Error al eliminar el libro seleccionado" + ex.getMessage());
         }
 
     }

@@ -24,7 +24,7 @@ import javafx.scene.control.Alert;
         alerta.show();
     }
      public static void mostrarConfi(String mensaje) {
-        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alerta = new Alert(Alert.AlertType.NONE);
         alerta.setContentText(mensaje);
         alerta.show();
     }

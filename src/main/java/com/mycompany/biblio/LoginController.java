@@ -52,7 +52,7 @@ public class LoginController {
             ok = login.checkBDUsuario(user, correo, pass);
             if (ok) {
                 App.loadLibrosWindow();
-                AlertsUtil.mostrarConfi("Correcto");
+//                AlertsUtil.mostrarConfi("Correcto");
             } else {
                 AlertsUtil.mostrarError("Algo ha fallado");
             }

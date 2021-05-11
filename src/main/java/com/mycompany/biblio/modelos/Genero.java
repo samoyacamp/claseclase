@@ -10,5 +10,5 @@ package com.mycompany.biblio.modelos;
  * @author sergi
  */
 public enum Genero {
-    Miedo, Infantil,Detectives,Comedia
+       Perretes, Mancha, Tronos, King, Potter, Dan, Cohelo
 }

@@ -43,7 +43,7 @@ public class LibroDAO {
     }
 
     public void insertarLibro(Libros libro) throws SQLException {
-        String sql = "INSERT INTO biblioteca.libros(ID,NOMBRE,EDITORIAL,AUTOR,GENERO,FECHA,PRECIO,SAGA) VALUES(?,?,?,?,?,?,?.?)";
+        String sql = "{call spNewLibro (?,?,?,?,?,?,?,?)}";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, libro.getId());
         sentencia.setString(2, libro.getNombre());
@@ -52,11 +52,13 @@ public class LibroDAO {
         sentencia.setString(5, libro.getGenero());
         sentencia.setDate(6, libro.getFecha());
         sentencia.setDouble(7, libro.getPrecio());
+        sentencia.setString(8, libro.getSaga());
         sentencia.executeUpdate();
 
     }
-     public void deleteLibro(Libros libro) throws SQLException {
-        String sql = "DELETE FROM libros WHERE idlibro = ?";
+
+    public void deleteLibro(Libros libro) throws SQLException {
+        String sql = "DELETE FROM libros WHERE id = ?";
 
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setInt(1, libro.getId());
@@ -87,22 +89,32 @@ public class LibroDAO {
         }
 
         return libros;
+//    }
+//      private int id;
+//    private String nombre;
+//    private String editorial;
+//    private String autor;
+//    private String genero;
+//    private Date fecha;
+//    private double precio;
+//    private String saga;
+
     }
+
     public void modificarLibro(Libros libro) throws SQLException {
-        String sql = "{call sp_UpdateRuta (?,?,?,?,?,?,?,?)}";
+        String sql = "{call spNewLibro (?,?,?,?,?,?,?)}";
 
         CallableStatement sentencia = conexion.prepareCall(sql);
         sentencia.setInt(1, libro.getId());
         sentencia.setString(2, libro.getNombre());
-        sentencia.setString(3, libro.getEditorial());
-        sentencia.setString(4, libro.getAutor());
-        sentencia.setString(5, libro.getGenero());
-        sentencia.setDate(6, libro.getFecha());
-        sentencia.setDouble(7, libro.getPrecio());
-        sentencia.setString(8, libro.getSaga());
-        sentencia.registerOutParameter(9, java.sql.Types.INTEGER);
-  
+        sentencia.setString(3, libro.getAutor());
+        sentencia.setString(4, libro.getGenero());
+        sentencia.setDate(5, libro.getFecha());
+        sentencia.setDouble(6, libro.getPrecio());
+        sentencia.setString(7, libro.getSaga());
+
         sentencia.execute();
-}
-    
+
+//       
+    }
 }
